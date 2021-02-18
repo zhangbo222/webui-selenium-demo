@@ -2,6 +2,7 @@ package cases;
 
 import org.testng.annotations.Test;
 import utils.BusinessException;
+import utils.TestUtil;
 
 public interface LoginTest {
     @Test

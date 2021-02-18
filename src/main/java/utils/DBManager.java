@@ -1,14 +1,18 @@
 package utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBManager {
-    static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
-    static final String DB_URL = "jdbc:mysql://localhost:3306/demo";
-    static final String USR = "root";
-    static final String PWD = "root";
+    private static final Logger logger = LoggerFactory.getLogger(DBManager.class);
+
+//    static final String DB_URL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
+//    static final String USR = "root";
+//    static final String PWD = "root";
 
     private Connection conn;
     private Statement statement;
@@ -16,10 +20,10 @@ public class DBManager {
 
     private DBManager() {
         try {
-            conn = DriverManager.getConnection(DB_URL, USR, PWD);
+            conn = DriverManager.getConnection(Constants.DB_HOST, Constants.DB_USER, Constants.DB_PASSWORD);
             statement = conn.createStatement();
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("connect mysql failed, error: " + e);
         }
     }
 
@@ -40,14 +44,14 @@ public class DBManager {
 
     public List<String> getTables() {
         ArrayList<String> tableList = new ArrayList<String>();
-        String sql = "show tables";
+        String sql = "select * from loginpage";
         try {
             resultSet = getResult(sql);
             while (resultSet.next()) {
-                tableList.add(resultSet.getString(1));
+                tableList.add(resultSet.getString(3));
             }
         } catch (SQLException e) {
-            e.printStackTrace();
+            logger.error("no such table error: " + e);
         }
         return tableList;
     }
