@@ -2,9 +2,9 @@ package pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import utils.DriverUtil;
+import utils.WebDriverManger;
 
-public class LoginPage extends DriverUtil {
+public class LoginPage extends WebDriverManger {
     public static WebElement txt_UID() {
         return driver.findElement(By.id("UID"));
     }
