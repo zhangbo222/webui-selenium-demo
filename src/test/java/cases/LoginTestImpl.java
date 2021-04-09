@@ -8,8 +8,8 @@ public class LoginTestImpl extends TestUtil implements LoginTest {
 
     @Override
     public void test_login_success() {
-        login.inputUid("valid1");
-        login.inputPwd("valid1");
+        login.inputUid("valid");
+        login.inputPwd("valid");
         login.clickLoginBtn();
     }
 }

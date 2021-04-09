@@ -1,16 +1,13 @@
 package utils;
 
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 
-public class TestUtil extends DriverUtil {
+public class TestUtil extends WebDriverManger {
     private static final Logger logger = LoggerFactory.getLogger(TestUtil.class);
-    public static WebDriver driver;
 
     public TestUtil() {
     }
