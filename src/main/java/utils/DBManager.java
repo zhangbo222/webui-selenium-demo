@@ -8,11 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBManager {
-    private static final Logger logger = LoggerFactory.getLogger(DBManager.class);
-
-//    static final String DB_URL = "jdbc:mysql://localhost:3306/demo?useSSL=false";
-//    static final String USR = "root";
-//    static final String PWD = "root";
+    private static final Logger log = LoggerFactory.getLogger(DBManager.class);
 
     private Connection conn;
     private Statement statement;
@@ -23,7 +19,7 @@ public class DBManager {
             conn = DriverManager.getConnection(Constants.DB_HOST, Constants.DB_USER, Constants.DB_PASSWORD);
             statement = conn.createStatement();
         } catch (SQLException e) {
-            logger.error("connect mysql failed, error: " + e);
+            log.error("connect mysql failed, error: " + e);
         }
     }
 
@@ -51,7 +47,7 @@ public class DBManager {
                 tableList.add(resultSet.getString(3));
             }
         } catch (SQLException e) {
-            logger.error("no such table error: " + e);
+            log.error("no such table error: " + e);
         }
         return tableList;
     }

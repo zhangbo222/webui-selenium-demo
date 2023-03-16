@@ -3,6 +3,9 @@ package cases;
 import org.testng.annotations.Test;
 import utils.BusinessException;
 
+/**
+ * Define your test cases here
+ */
 public interface LoginTest {
     @Test
     default void test_login_success() {
@@ -10,7 +13,7 @@ public interface LoginTest {
     }
 
     @Test
-    default void test_login_fail() {
+    default void test_login_with_invalid_uid() {
         throw new BusinessException();
     }
 }
