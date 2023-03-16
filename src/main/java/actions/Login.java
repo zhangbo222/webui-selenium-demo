@@ -4,29 +4,42 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import pages.LoginPage;
 
+/**
+ * All actions in login page
+ */
 public class Login {
-    private static final Logger logger = LoggerFactory.getLogger(Login.class);
+    private static final Logger log = LoggerFactory.getLogger(Login.class);
 
-    public void inputUid(String type) {
-        if (type.equalsIgnoreCase("valid")) {
-            LoginPage.txt_UID().sendKeys("zhangbo890222");
-        } else if (type.equalsIgnoreCase("invalid")) {
-            LoginPage.txt_UID().sendKeys("test");
-        }
+    public void inputUid(String uid) {
+        log.info("enter uid =" + uid);
+        LoginPage.txt_UID().sendKeys(uid);
     }
 
-    public void inputPwd(String type) {
-        if (type.equalsIgnoreCase("valid")) {
-            LoginPage.txt_PWD().sendKeys("19900925");
-        } else if (type.equalsIgnoreCase("invalid")) {
-            LoginPage.txt_PWD().sendKeys("23232");
-        }
+    public void inputPwd(String pwd) {
+        log.info("enter pwd =" + pwd);
+        LoginPage.txt_PWD().sendKeys(pwd);
     }
 
     public void clickLoginBtn() {
+        log.info("click login btn");
         LoginPage.btn_Login().click();
     }
 
-    public void clickForgotUid() {
+    public void checkLoginSuccess(){
+
+    }
+
+    public void checkLoginFail() {
+        LoginPage.txt_error_invalidUID();
+    }
+
+    public void clickForgotUID() {
+        log.info("click forgot UID link");
+        LoginPage.link_forgotUID().click();
+    }
+
+    public void clickForgotPIN() {
+        log.info("click forgot PIN link");
+        LoginPage.link_forgotPIN().click();
     }
 }
