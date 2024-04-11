@@ -1,9 +1,9 @@
 package cases;
 
 import actions.Login;
-import utils.BaseTest;
+import utils.Base;
 
-public class LoginTestImpl extends BaseTest implements LoginTest {
+public class LoginTestImpl extends Base implements LoginTest {
     Login login = new Login();
 
     @Override
