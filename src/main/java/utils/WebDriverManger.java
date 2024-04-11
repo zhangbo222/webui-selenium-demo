@@ -14,18 +14,23 @@ public class WebDriverManger {
     String browser = System.getProperty("browser");
 
     public WebDriverManger() {
-        if (browser.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "C:\\Users\\zhang\\IdeaProjects\\web-demo\\src\\main\\resources\\drivers\\chromedriver.exe");
-            //This options will allow silence run
-            ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless=new");
-            driver = new ChromeDriver(options);
-        } else if (browser.equalsIgnoreCase("firefox")) {
-            System.setProperty("webdriver.firefox.driver", "C:\\Users\\zhang\\IdeaProjects\\web-demo\\src\\main\\resources\\drivers\\chromedriver.exe");
-            driver = new FirefoxDriver();
-        } else if (browser.equalsIgnoreCase("safari")) {
-            //todo
-            driver = new SafariDriver();
+        switch (browser) {
+            case "Chrome":
+            default:
+                System.setProperty(Browser.CHROME.getDriverKey(), Browser.CHROME.getDriverPath());
+                //This options will allow silence run
+                ChromeOptions options = new ChromeOptions();
+                options.addArguments("--headless=new");
+                driver = new ChromeDriver(options);
+                break;
+            case "Firefox":
+                System.setProperty(Browser.FIREFOX.getDriverKey(), Browser.FIREFOX.getDriverPath());
+                driver = new FirefoxDriver();
+                break;
+            case "Safari":
+                System.setProperty(Browser.SAFARI.getDriverKey(), Browser.SAFARI.getDriverPath());
+                driver = new SafariDriver();
+                break;
         }
     }
 }
